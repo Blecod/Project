@@ -15,11 +15,11 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class RegisterBox {
+public class RegisterGUI {
 	private Stage window;
 	private TextField firstname, secondname, email;
 	private PasswordField password, repeatPassword;
-	public RegisterBox(){
+	public RegisterGUI(){
 		window = new Stage();
 		window.initModality(Modality.APPLICATION_MODAL);
 		window.setTitle("Register");
@@ -73,31 +73,31 @@ public class RegisterBox {
 		@Override
 		public void handle(ActionEvent arg0) {	
 			if(firstname.getText().length()==0){
-				AlertBox.show("Fill in  your first name!");
+				AlertGUI.show("Fill in  your first name!");
 				return;
 			}
 			if(secondname.getText().length()==0){
-				AlertBox.show("Fill in  your second name!");
+				AlertGUI.show("Fill in  your second name!");
 				return;
 			}
 			if(email.getText().length()==0){
-				AlertBox.show("Fill in  your e-mail!");
+				AlertGUI.show("Fill in  your e-mail!");
 				return;
 			}
 			if(password.getText().length()==0){
-				AlertBox.show("Fill in  your password!");
+				AlertGUI.show("Fill in  your password!");
 				return;
 			}
 			if(repeatPassword.getText().length()==0){
-				AlertBox.show("Fill in  your re-password!");
+				AlertGUI.show("Fill in  your re-password!");
 				return;
 			}
 			if(!repeatPassword.getText().equals(password.getText())){
-				AlertBox.show("Your passwords doesn't match!");
+				AlertGUI.show("Your passwords doesn't match!");
 				return;
 			}
 			if(password.getText().length() < 5){
-				AlertBox.show("Password must contain at least 5 symbols!");
+				AlertGUI.show("Password must contain at least 5 symbols!");
 				return;
 			}
 			window.close();

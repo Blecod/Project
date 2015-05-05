@@ -9,7 +9,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class AlertBox {
+public class AlertGUI {
 	public static void show(String message){
 		Stage window = new Stage();
 		window.initModality(Modality.APPLICATION_MODAL);

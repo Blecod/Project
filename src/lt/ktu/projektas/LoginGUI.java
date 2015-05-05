@@ -15,11 +15,11 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class LoginBox {
+public class LoginGUI {
 	private Stage window;
 	private TextField email;
 	private PasswordField password;
-	public LoginBox(){
+	public LoginGUI(){
 		window = new Stage();
 		window.initModality(Modality.APPLICATION_MODAL);
 		window.setTitle("Login");
@@ -57,11 +57,11 @@ public class LoginBox {
 		@Override
 		public void handle(ActionEvent arg0) {	
 			if(email.getText().length()==0){
-				AlertBox.show("Fill in  your e-mail!");
+				AlertGUI.show("Fill in  your e-mail!");
 				return;
 			}
 			if(password.getText().length()==0){
-				AlertBox.show("Fill in  your password!");
+				AlertGUI.show("Fill in  your password!");
 				return;
 			}
 			window.close();

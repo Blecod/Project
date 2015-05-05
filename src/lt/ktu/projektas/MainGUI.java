@@ -31,11 +31,9 @@ public class MainGUI extends Application{
 	}
 	@Override
 	public void start(Stage stage) throws Exception {
-		
 		RowConstraints row1;
 		row1 = new RowConstraints();
 		row1.setPercentHeight(100);
-		
 		ColumnConstraints col1 = new ColumnConstraints();
 	    col1.setPercentWidth(25);
 	    ColumnConstraints col2 = new ColumnConstraints();
@@ -80,12 +78,12 @@ public class MainGUI extends Application{
 		MenuItem menuUserLogout = new MenuItem("Logout");
 		MenuItem menuUserLogin = new MenuItem("Login");
 		menuUserLogin.setOnAction(e -> {
-			LoginBox box = new LoginBox();
+			LoginGUI box = new LoginGUI();
 			System.out.println(box.getEmail()+":"+box.getPassword());
 		});
 		MenuItem menuUserRegister = new MenuItem("Register");
 		menuUserRegister.setOnAction(e -> {
-			RegisterBox box = new RegisterBox();
+			RegisterGUI box = new RegisterGUI();
 			System.out.println(box.getEmail()+":"+box.getPassword());
 		});
 		MenuItem menuCreate = new MenuItem("Create");
