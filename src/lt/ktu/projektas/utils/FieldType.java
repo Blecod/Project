@@ -18,10 +18,20 @@ import javax.swing.JTextField;
  * @author Domas
  */
 public enum FieldType {
-    TEXTFIELD,
-    TEXTAREA,
-    INTEGER,
-    DOUBLE,
-    BOOLEAN,
-    COMBOBOX; 
+    TEXTFIELD("Text field"),
+    TEXTAREA("Text area"),
+    INTEGER("Integer field"),
+    DOUBLE("Double field"),
+    BOOLEAN("Checkbox"),
+    COMBOBOX("Combobox");
+    private String title;
+    private FieldType(String title){
+    	this.title = title;
+    }
+    public static FieldType[] getAllTypes(){
+    	return new FieldType[]{TEXTFIELD, TEXTAREA, INTEGER, DOUBLE, BOOLEAN, COMBOBOX};
+    }
+    public String toString(){
+    	return title;
+    }
 }

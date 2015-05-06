@@ -87,6 +87,9 @@ public class MainGUI extends Application{
 			System.out.println(box.getEmail()+":"+box.getPassword());
 		});
 		MenuItem menuCreate = new MenuItem("Create");
+		menuCreate.setOnAction(e -> {
+			CreateFormGUI box = new CreateFormGUI(this);
+		});
 		MenuItem menuDelete = new MenuItem("Delete");
 		menuUser.getItems().addAll(menuUserLogout, menuUserLogin, menuUserRegister);
 		menuEdit.getItems().addAll(menuCreate, menuDelete);
