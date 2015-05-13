@@ -14,7 +14,17 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
+/*
+ * 	Naudojimas:
+ * 	Runnable run = new Runnable() {
+				@Override
+				public void run() {
+					//Kodas, kuris vykdomas kol rodomas loading langas, ir jam pasibaigus langas iðjungiamas	
+				}
+			};
+	LoadingGUI.show(run); // Kol bus atidarytas langas, kodas po ðios eilutës nevyks kol langas nebus uþdarytas, ar jam duotas kodas pabaigtas
+	
+ */
 public class LoginGUI {
 	private Stage window;
 	private TextField email;
