@@ -1,5 +1,11 @@
 package lt.ktu.projektas;
 
+import java.util.ArrayList;
+
+import javax.ws.rs.InternalServerErrorException;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -10,6 +16,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import lt.ktu.project.client.FormActions;
+import lt.ktu.project.client.RestFormActions;
+import lt.ktu.project.client.ServerCommunication;
 import lt.ktu.projektas.tabs.FormTabPane;
 import lt.ktu.projektas.utils.Field;
 import lt.ktu.projektas.utils.FieldType;
@@ -17,6 +26,8 @@ import lt.ktu.projektas.utils.FilledData;
 import lt.ktu.projektas.utils.Form;
 import lt.ktu.projektas.utils.FormType;
 import lt.ktu.projektas.utils.User;
+import lt.ktu.projektas.utils.User2Container;
+
 
 
 public class MainGUI extends Application{
@@ -26,11 +37,31 @@ public class MainGUI extends Application{
 	Tab tab1, tab2;
 	GridPane pane;
 	FormList formList;
+	
+	static private FormActions formActions;
+	private Client client;
+	
+	
+	
 	public static void main(String[] args){
 		launch(args);
 	}
 	@Override
 	public void start(Stage stage) throws Exception {
+	//	test1();
+		
+		ServerCommunication toServer = new ServerCommunication();
+		toServer.BootUp();
+		
+		User2Container formsContainer;
+		ArrayList<Form> forms = new ArrayList<Form>();
+		
+		try{
+			formsContainer = toServer.getForms("?author=Lukas&q=&sort=&order=&limit=100");
+		} catch (InternalServerErrorException e) {
+			System.out.println("oh noooes!");
+		}
+		
 		RowConstraints row1;
 		row1 = new RowConstraints();
 		row1.setPercentHeight(100);
@@ -51,20 +82,15 @@ public class MainGUI extends Application{
         temp.setFields(new Field[]{new Field(FieldType.TEXTAREA, "Straipsnis"), new Field(FieldType.DOUBLE, "Ilgis")});
         temp.setData(new FilledData[]{
         		new FilledData<>(userr, "2014.03.24 12:33", new Object[]{"Lorem ipsum dolor sit amet, consectetur adipiscing elit. \nMaecenas a laoreet lorem, at viverra erat. Aenean venenatis libero at lectus pellentesque bibendum. Duis rhoncus tortor quis elementum fermentum. Phasellus sollicitudin scelerisque luctus. Nullam vestibulum interdum rhoncus.a</textarea>", 0.0}),
-        		new FilledData<>(userr, "2014.03.24 12:33", new Object[]{"Lorem ipsum dolor sit amet, consectetur adipiscing elit. \nMaecenas a laoreet lorem, at viverra erat. Aenean venenatis libero at lectus pellentesque bibendum. Duis rhoncus tortor quis elementum fermentum. Phasellus sollicitudin scelerisque luctus. Nullam vestibulum interdum rhoncus.a</textarea>", 0.0}),
-        		new FilledData<>(userr, "2014.03.24 12:33", new Object[]{"Lorem ipsum dolor sit amet, consectetur adipiscing elit. \nMaecenas a laoreet lorem, at viverra erat. Aenean venenatis libero at lectus pellentesque bibendum. Duis rhoncus tortor quis elementum fermentum. Phasellus sollicitudin scelerisque luctus. Nullam vestibulum interdum rhoncus.a</textarea>", 0.0}),
-        		new FilledData<>(userr, "2014.03.24 12:33", new Object[]{"Lorem ipsum dolor sit amet, consectetur adipiscing elit. \nMaecenas a laoreet lorem, at viverra erat. Aenean venenatis libero at lectus pellentesque bibendum. Duis rhoncus tortor quis elementum fermentum. Phasellus sollicitudin scelerisque luctus. Nullam vestibulum interdum rhoncus.a</textarea>", 0.0}),
-        		new FilledData<>(userr, "2014.03.24 12:33", new Object[]{"Lorem ipsum dolor sit amet, consectetur adipiscing elit. \nMaecenas a laoreet lorem, at viverra erat. Aenean venenatis libero at lectus pellentesque bibendum. Duis rhoncus tortor quis elementum fermentum. Phasellus sollicitudin scelerisque luctus. Nullam vestibulum interdum rhoncus.a</textarea>", 0.0}),
-        		new FilledData<>(userr, "2014.03.24 12:33", new Object[]{"Lorem ipsum dolor sit amet, consectetur adipiscing elit. \nMaecenas a laoreet lorem, at viverra erat. Aenean venenatis libero at lectus pellentesque bibendum. Duis rhoncus tortor quis elementum fermentum. Phasellus sollicitudin scelerisque luctus. Nullam vestibulum interdum rhoncus.a</textarea>", 0.0}),
-        		new FilledData<>(userr, "2014.03.24 12:33", new Object[]{"Lorem ipsum dolor sit amet, consectetur adipiscing elit. \nMaecenas a laoreet lorem, at viverra erat. Aenean venenatis libero at lectus pellentesque bibendum. Duis rhoncus tortor quis elementum fermentum. Phasellus sollicitudin scelerisque luctus. Nullam vestibulum interdum rhoncus.a</textarea>", 0.0}),
-        		new FilledData<>(userr, "2014.03.24 12:33", new Object[]{"Lorem ipsum dolor sit amet, consectetur adipiscing elit. \nMaecenas a laoreet lorem, at viverra erat. Aenean venenatis libero at lectus pellentesque bibendum. Duis rhoncus tortor quis elementum fermentum. Phasellus sollicitudin scelerisque luctus. Nullam vestibulum interdum rhoncus.a</textarea>", 0.0}),
-        		new FilledData<>(userr, "2014.03.24 12:33", new Object[]{"Lorem ipsum dolor sit amet, consectetur adipiscing elit. \nMaecenas a laoreet lorem, at viverra erat. Aenean venenatis libero at lectus pellentesque bibendum. Duis rhoncus tortor quis elementum fermentum. Phasellus sollicitudin scelerisque luctus. Nullam vestibulum interdum rhoncus.a</textarea>", 0.0}),
-        		new FilledData<>(userr, "2014.03.24 12:33", new Object[]{"Lorem ipsum dolor sit amet, consectetur adipiscing elit. \nMaecenas a laoreet lorem, at viverra erat. Aenean venenatis libero at lectus pellentesque bibendum. Duis rhoncus tortor quis elementum fermentum. Phasellus sollicitudin scelerisque luctus. Nullam vestibulum interdum rhoncus.a</textarea>", 0.0}),
-        		new FilledData<>(userr, "2014.03.24 12:33", new Object[]{"Lorem ipsum dolor sit amet, consectetur adipiscing elit. \nMaecenas a laoreet lorem, at viverra erat. Aenean venenatis libero at lectus pellentesque bibendum. Duis rhoncus tortor quis elementum fermentum. Phasellus sollicitudin scelerisque luctus. Nullam vestibulum interdum rhoncus.a</textarea>", 0.0}),
-        		new FilledData<>(userr, "2014.03.24 12:33", new Object[]{"Lorem ipsum dolor sit amet, consectetur adipiscing elit. \nMaecenas a laoreet lorem, at viverra erat. Aenean venenatis libero at lectus pellentesque bibendum. Duis rhoncus tortor quis elementum fermentum. Phasellus sollicitudin scelerisque luctus. Nullam vestibulum interdum rhoncus.a</textarea>", 0.0}),
-        		new FilledData<>(userr, "2014.03.24 12:33", new Object[]{"Lorem ipsum dolor sit amet, consectetur adipiscing elit. \nMaecenas a laoreet lorem, at viverra erat. Aenean venenatis libero at lectus pellentesque bibendum. Duis rhoncus tortor quis elementum fermentum. Phasellus sollicitudin scelerisque luctus. Nullam vestibulum interdum rhoncus.a</textarea>", 0.0})});
+        		new FilledData<>(userr, "2014.03.24 12:33", new Object[]{"ectetur adipiscing elit. \nMaecm rhoncus.a</textarea>", 0.0}),
+        		new FilledData<>(userr, "2014.03.24 12:33", new Object[]{"L4psum dolor sit amet, consectetur adipiscing elit. \nMaecm rhoncus.a</textarea>", 0.0}),
+        		new FilledData<>(userr, "2014.03.24 12:33", new Object[]{"L5dolor sit amet, consectetur adipiscing elit. \nMaecm rhoncus.a</textarea>", 0.0}),
+
+        		new FilledData<>(userr, "2014.03.24 12:33", new Object[]{"Lorem it. \nMaecena viverra erat. Aenean venenatis libero at lectus pellentum interdum rhoncus.a</textarea>", 0.0})});
         
-	    tabs.openForm(temp);
+	    
+        
+        tabs.openForm(temp);
 	    pane.add(tabs, 1, 0);
 		formList = new FormList();
 		pane.add(formList, 0, 0);

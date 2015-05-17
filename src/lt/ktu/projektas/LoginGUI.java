@@ -3,6 +3,12 @@ package lt.ktu.projektas;
 
 
 
+import java.io.ByteArrayInputStream;
+import java.nio.charset.StandardCharsets;
+
+import javax.ws.rs.BadRequestException;
+import javax.ws.rs.InternalServerErrorException;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -14,6 +20,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import lt.ktu.project.client.ServerCommunication;
 
 public class LoginGUI {
 	private Stage window;
@@ -64,6 +71,26 @@ public class LoginGUI {
 				AlertGUI.show("Fill in  your password!");
 				return;
 			}
+			
+			String nick = "Testy9";
+			String pass = "Passy3";
+			ServerCommunication toServer = new ServerCommunication();
+			try {
+				toServer.LogInUser(nick, pass);
+			} catch (BadRequestException e) {
+				System.out.println(e.getResponse().getEntity());
+		          ByteArrayInputStream stream =(ByteArrayInputStream) e.getResponse().getEntity();
+		          int n = stream.available();
+		          byte[] bytes = new byte[n];
+		          stream.read(bytes, 0, n);
+		          String s = new String(bytes, StandardCharsets.UTF_8);
+		          System.out.println(s);
+		          
+		        	  	//window.close();
+		          AlertGUI.show("Fill in  your password!");
+				  return;
+			}
+			
 			window.close();
 		}
 	}

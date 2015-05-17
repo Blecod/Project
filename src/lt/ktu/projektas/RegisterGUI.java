@@ -1,7 +1,15 @@
 package lt.ktu.projektas;
 
 
+import java.io.ByteArrayInputStream;
+import java.nio.charset.StandardCharsets;
 
+import javax.servlet.FilterRegistration;
+import javax.ws.rs.BadRequestException;
+import javax.ws.rs.InternalServerErrorException;
+import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -14,12 +22,25 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import lt.ktu.project.client.Register;
+import lt.ktu.project.client.RestRegister;
+import lt.ktu.projektas.utils.User;
+import lt.ktu.projektas.utils.User2;
+import lt.ktu.project.client.ServerCommunication;;
 
 public class RegisterGUI {
+	//Register usr;
+	//Client client;
+	
 	private Stage window;
 	private TextField firstname, secondname, email;
 	private PasswordField password, repeatPassword;
 	public RegisterGUI(){
+		
+		
+	//	client = ClientBuilder.newClient();
+	//	usr = new RestRegister(client);
+		
 		window = new Stage();
 		window.initModality(Modality.APPLICATION_MODAL);
 		window.setTitle("Register");
@@ -100,6 +121,35 @@ public class RegisterGUI {
 				AlertGUI.show("Password must contain at least 5 symbols!");
 				return;
 			}
+			System.out.println("testy");
+			
+			
+			User2 user = new User2("Testy8", "Passy3", "name3", "Surname", "Julius");
+			
+			
+			ServerCommunication toServer = new ServerCommunication();
+			//String url;
+			//toServer.registerUser(user);
+			
+			
+			try {
+				toServer.registerUser(user);
+			} catch (InternalServerErrorException e) {
+//				System.out.println(e.getResponse().getEntity());
+//		          ByteArrayInputStream stream =(ByteArrayInputStream) e.getResponse().getEntity();
+//		          int n = stream.available();
+//		          byte[] bytes = new byte[n];
+//		          stream.read(bytes, 0, n);
+//		          String s = new String(bytes, StandardCharsets.UTF_8);
+//		          System.out.println(s);
+		          
+		        	  	//window.close();
+		          AlertGUI.show("User already used");
+		          System.out.println("Username already in use");
+				  return;
+			}
+			
+			
 			window.close();
 		}
 	}

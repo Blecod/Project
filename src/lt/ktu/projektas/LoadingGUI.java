@@ -15,10 +15,10 @@ import javafx.stage.Stage;
  * 	Runnable run = new Runnable() {
 		@Override
 		public void run() {
-			//Kodas, kuris vykdomas kol rodomas loading langas, ir jam pasibaigus langas iðjungiamas	
+			//Kodas, kuris vykdomas kol rodomas loading langas, ir jam pasibaigus langas iÃ°jungiamas	
 		}
 	};
-	LoadingGUI.show(run); // Kol bus atidarytas langas, kodas po ðios eilutës nevyks kol langas nebus uþdarytas, ar jam duotas kodas pabaigtas
+	LoadingGUI.show(run); // Kol bus atidarytas langas, kodas po Ã°ios eilutÃ«s nevyks kol langas nebus uÃ¾darytas, ar jam duotas kodas pabaigtas
  */
 public class LoadingGUI {
 	private static Stage window;
