@@ -26,7 +26,7 @@ public class FilledData<E>{
     public FilledData(User user, String date, E[] data){
         this.user = user;
         this.date = new SimpleStringProperty(date);
-        this.userFullName = new SimpleStringProperty(user.getFirstName()+" "+user.getSecondName()+",\n"+user.getEmail());
+        this.userFullName = new SimpleStringProperty(user.getName()+" "+user.getSurname()+",\n"+user.getUname());
         this.data = data;
     }
     public E[] getData(){

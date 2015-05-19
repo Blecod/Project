@@ -28,7 +28,7 @@ public class InvocationWrapper {
 			return invocation.invoke(clazz);
 		}
 		
-		public static <T> T invokePut(WebTarget parent, String path, T value, Class<T> clazz) {
+		public static <T, R> R invokePut(WebTarget parent, String path, T value, Class<R> clazz) {
 			WebTarget target = parent.path(path);
 			Invocation invocation = target.request(MediaType.APPLICATION_JSON)
 					.buildPut(Entity.entity(value, MediaType.APPLICATION_JSON));

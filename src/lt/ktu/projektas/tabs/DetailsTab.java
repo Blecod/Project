@@ -40,9 +40,9 @@ public class DetailsTab extends Tab{
 			new Label("Created by:")
 		};
 		Label values[] = new Label[]{
-				new Label(form.getTitle()),
-				new Label(form.getUser().getFirstName()+" "+form.getUser().getSecondName()),
-				new Label(form.getUser().getEmail())
+				new Label(form.getTitle())//,
+			//	new Label(form.getUser().getFirstName()+" "+form.getUser().getSecondName()),
+			//	new Label(form.getUser().getEmail())
 		};
 		for(Label t:titles)
 			t.setFont(Font.font("Arial", FontWeight.BOLD, 14));

@@ -1,5 +1,11 @@
 package lt.ktu.projektas;
 
+import java.io.ByteArrayInputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+
+import javax.ws.rs.BadRequestException;
+
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -12,6 +18,9 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import lt.ktu.project.client.ServerCommunication;
+import lt.ktu.projektas.TESTmaterial.Form;
+import lt.ktu.projektas.TESTmaterial.Question;
 import lt.ktu.projektas.utils.FieldType;
 
 public class CreateFormGUI {
@@ -35,9 +44,8 @@ public class CreateFormGUI {
 		Button add = new Button("Add");
 		title.setMaxWidth(Double.MAX_VALUE);
 		combo.setMaxWidth(Double.MAX_VALUE);
+		add.setOnAction(new onSubmit());
 		add.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-		
-		
 	
 		
 		
@@ -70,6 +78,39 @@ public class CreateFormGUI {
 		@Override
 		public void handle(ActionEvent arg0) {	
 
+			ServerCommunication toServer = new ServerCommunication();
+			try {
+				ArrayList<String> tags = new ArrayList<String>();
+				tags.add("Tag un");
+				tags.add("Tag deux");
+				tags.add("Tag trois");
+				ArrayList<Question> questions = new ArrayList<Question>();
+				Question question = new Question();
+				question.setName("Ze name");
+				question.setType("integer");
+				question.setAllowEmpty(false);
+				question.setAllowCustom("umm");
+				questions.add(question);
+				Form newForm = new Form("SSSSSSSName", "SAuthor", "Sdescription", tags, "Date", true, true, true, true, questions, 100);
+				
+				//toServer.PostForm(newForm);
+				toServer.PutForm(newForm, "16");
+				
+			} catch (BadRequestException e) {
+				System.out.println(e.getResponse().getEntity());
+		          ByteArrayInputStream stream =(ByteArrayInputStream) e.getResponse().getEntity();
+		          int n = stream.available();
+		          byte[] bytes = new byte[n];
+		          stream.read(bytes, 0, n);
+		          String s = new String(bytes, StandardCharsets.UTF_8);
+		          System.out.println(s);
+		          
+		        	  	//window.close();
+		          AlertGUI.show("Fill in  your password!");
+				  return;
+			}
+			
+			
 		}
 	}
 }

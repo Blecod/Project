@@ -72,11 +72,12 @@ public class LoginGUI {
 				return;
 			}
 			
-			String nick = "Testy9";
-			String pass = "Passy3";
-			ServerCommunication toServer = new ServerCommunication();
+			String nick = "Testy2";
+			String pass = "Passy2";
 			try {
+				ServerCommunication toServer = new ServerCommunication(nick, pass);
 				toServer.LogInUser(nick, pass);
+			//	toServer.c
 			} catch (BadRequestException e) {
 				System.out.println(e.getResponse().getEntity());
 		          ByteArrayInputStream stream =(ByteArrayInputStream) e.getResponse().getEntity();

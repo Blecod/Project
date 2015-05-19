@@ -25,7 +25,7 @@ import javafx.stage.Stage;
 import lt.ktu.project.client.Register;
 import lt.ktu.project.client.RestRegister;
 import lt.ktu.projektas.utils.User;
-import lt.ktu.projektas.utils.User2;
+import lt.ktu.projektas.utils.User;
 import lt.ktu.project.client.ServerCommunication;;
 
 public class RegisterGUI {
@@ -124,7 +124,7 @@ public class RegisterGUI {
 			System.out.println("testy");
 			
 			
-			User2 user = new User2("Testy8", "Passy3", "name3", "Surname", "Julius");
+			User user = new User("Testy10", "Passy3", "name3", "Surname", "Julius");
 			
 			
 			ServerCommunication toServer = new ServerCommunication();

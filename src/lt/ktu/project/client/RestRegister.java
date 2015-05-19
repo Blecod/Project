@@ -4,11 +4,11 @@ import javax.ws.rs.client.Client;
 import javax.ws.rs.client.WebTarget;
 
 import lt.ktu.projektas.utils.User;
-import lt.ktu.projektas.utils.User2;
+import lt.ktu.projektas.utils.User;
 
 public class RestRegister implements Register {
 	
-	private static final String PERSON_URL = "http://84.55.7.191:8080/KtuFormBackend/user";
+	private static final String PERSON_URL = "http://84.55.17.37:8080/KtuFormBackend/user";
 	
 	private WebTarget target;
 	
@@ -17,7 +17,7 @@ public class RestRegister implements Register {
 	}
 	
 	@Override
-	public String registerUser(User2 person){
+	public String registerUser(User person){
 		return InvocationWrapper.invokePost(target, "", person, String.class);
 	}
 	

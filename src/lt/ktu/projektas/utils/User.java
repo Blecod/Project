@@ -1,56 +1,67 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package lt.ktu.projektas.utils;
 
-/**
- *
- * @author Domas
- */
-public class User {
-    private final String firstName, secondName, email;
-    private String password;
-    private boolean company;
-    
-    public User(String firstName, String secondName, String email){
-        this.firstName = firstName;
-        this.secondName = secondName;
-        this.email = email;
-        this.password = null;
-        this.company = false;
-    }
-    public void setPassword(String password){
-        this.password = password;
-    }
-    public String getFirstName(){
-        return firstName;
-    }
-    public String getSecondName(){
-        return secondName;
-    }
-    public String getEmail(){
-        return email;
-    }
-    public String getPassword(){
-        return password;
-    }
-    
-    public boolean getCompany(){
-    	return company;
-    }
-    
-    
-    @Override
-	public String toString() {
-		return 
-			  "{ uname : " + email + ", \n" +
-			  "pass : " + password + ", \n" + 
-			  "name : " + firstName + ", \n" +
-			  "surname : " + secondName + ", \n" +
-			  "isCompany : " + company + ", \n }";
+import com.fasterxml.jackson.annotation.JsonProperty;
 
+public class User {
+	private String uname;
+	private String pass;
+	
+	@JsonProperty("isCompany")
+	private boolean isCompany;
+	private String surname;
+	private String name;
+	private String company;
+	//private String testyField;
+	
+	public User(String uName, String Pass, String Name, String nik, String Company){
+		this.uname = uName;
+		this.pass = Pass;
+		this.name = Name;
+		this.surname = nik;
+		this.isCompany = false;
+		this.company = Company;
+		//this.testyField = "testyField";
+	}
+	
+	public String getUname() {
+		return uname;
+	}
+	public void setUname(String uname) {
+		this.uname = uname;
+	}
+	public String getPass() {
+		return pass;
+	}
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getSurname() {
+		return surname;
+	}
+	public void setNick(String nick) {
+		this.surname = nick;
+	}
+	public boolean isCompany() {
+		return isCompany;
+	}
+	public void setCompany(boolean isCompany) {
+		this.isCompany = isCompany;
+	}
+	public void setCompany(String compan){
+		this.company = compan;
+	}
+	public String getCompany(){
+		return company;
+	}
+	
+	@Override
+	public String toString() {
+		return "username: "+ uname + " Password: "+ pass;
 	}
 }

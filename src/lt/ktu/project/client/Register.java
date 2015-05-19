@@ -1,9 +1,11 @@
 package lt.ktu.project.client;
 
+import javax.ws.rs.client.WebTarget;
+
 import lt.ktu.projektas.utils.User;
-import lt.ktu.projektas.utils.User2;
+import lt.ktu.projektas.utils.User;
 
 public interface Register {
-	String registerUser(User2 usr);
+	String registerUser(User usr);
 	String getUser(String id);
 }
