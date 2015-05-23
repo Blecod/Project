@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package lt.ktu.projektas.utils;
+package lt.ktu.projektas.field;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -11,12 +11,9 @@ import java.util.Arrays;
 import java.util.Random;
 
 import javafx.beans.property.SimpleStringProperty;
+import lt.ktu.projektas.utils.User;
 
 
-/**
- *
- * @author Dominykas
- */
 public class FilledData<E>{
 
 	private final User user;
@@ -26,7 +23,7 @@ public class FilledData<E>{
     public FilledData(User user, String date, E[] data){
         this.user = user;
         this.date = new SimpleStringProperty(date);
-        this.userFullName = new SimpleStringProperty(user.getName()+" "+user.getSurname()+",\n"+user.getUname());
+        this.userFullName = new SimpleStringProperty(user.getFirstName()+" "+user.getSecondName()+",\n"+user.getEmail());
         this.data = data;
     }
     public E[] getData(){
