@@ -3,8 +3,6 @@ package lt.ktu.projektas.tabs;
 
 
 
-
-
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -20,8 +18,9 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
-import lt.ktu.projektas.utils.Field;
-import lt.ktu.projektas.utils.FilledData;
+import lt.ktu.projektas.AlertGUI;
+import lt.ktu.projektas.field.Field;
+import lt.ktu.projektas.field.FilledData;
 import lt.ktu.projektas.utils.Form;
 
 public class ResultsTab extends Tab{
@@ -75,11 +74,7 @@ public class ResultsTab extends Tab{
         Field[] fields = form.getFields();
         FilledData<Object> data = form.getData()[0];
         for(int i = 0; i < fields.length; i++){
-        	Label title = new Label(fields[i].getTitle());
-        	Field field = new Field(fields[i].getType(), fields[i].getTitle());
-        	field.setComponentValue(data.getStringAt(i));
-        	field.setComponentEditable(false);
-        	view.getChildren().addAll(title, field.getComponent());
+        	try { view.getChildren().addAll(fields[i].getDisplay()); } catch (Exception e) { AlertGUI.show(e.getMessage()); }
         }
         
 	    pane.add(table, 0, 0);

@@ -6,8 +6,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.VBox;
-import lt.ktu.projektas.utils.Field;
-import lt.ktu.projektas.utils.FilledData;
+import lt.ktu.projektas.AlertGUI;
+import lt.ktu.projektas.field.Field;
+import lt.ktu.projektas.field.FilledData;
 import lt.ktu.projektas.utils.Form;
 
 public class FormTab  extends Tab{
@@ -27,12 +28,7 @@ public class FormTab  extends Tab{
         Field[] fields = form.getFields();
         FilledData<Object> data = form.getData()[0];
         for(int i = 0; i < fields.length; i++){
-        	Label title = new Label(fields[i].getTitle());
-        	fields[i].setComponentValue(data.getData()[i]);
-        	fields[i].setComponentEditable(true);
-        	Control control = fields[i].getComponent();
-        	
-        	view.getChildren().addAll(title, control);
+        	try { view.getChildren().addAll(fields[i].getDisplay()); } catch (Exception e) { AlertGUI.show(e.getMessage()); }
         }
         
 	    setContent(view);

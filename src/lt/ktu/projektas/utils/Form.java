@@ -3,6 +3,8 @@ package lt.ktu.projektas.utils;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import lt.ktu.projektas.field.Field;
+import lt.ktu.projektas.field.FilledData;
 
 /**
  *
@@ -19,6 +21,7 @@ public class Form {
         this.title = name;
         this.user = user;
         this.date = date;
+        
     }
     public FormType getType(){
     	return type;
