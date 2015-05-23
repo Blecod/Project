@@ -29,7 +29,7 @@ public class CreateFormGUI {
 	private ComboBox<FieldType> combo;
 	public CreateFormGUI(MainGUI main){
 		this.main = main;
-		
+		//ss
 		window = new Stage();
 		window.initModality(Modality.APPLICATION_MODAL);
 		window.setTitle("Create form");
