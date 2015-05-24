@@ -76,13 +76,16 @@ public class RegisterGUI {
 		window.setScene(scene);
 		window.showAndWait();
 	}
+	public String getCompany(){
+		return company.getText();
+	}
 	public String getFirstName(){
 		return firstname.getText();
 	}
 	public String getSecondName(){
 		return secondname.getText();
 	}
-	public String getEmail(){
+	public String getUsername(){
 		return username.getText();
 	}
 	public String getPassword(){

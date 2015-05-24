@@ -101,7 +101,6 @@ public class CreateFormGUI {
 		@Override
 		public void handle(ContextMenuEvent event) {
 			if(fields.getSelectionModel().isEmpty())return;
-			System.out.println(fields.getSelectionModel().getSelectedItem().toString());
 			ContextMenu context = new ContextMenu();
 			MenuItem remove = new MenuItem("Remove");
 			remove.setOnAction(e -> fields.getItems().remove(fields.getSelectionModel().getSelectedItem()));

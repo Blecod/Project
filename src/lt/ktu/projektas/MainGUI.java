@@ -94,12 +94,10 @@ public class MainGUI extends Application{
 		MenuItem menuUserLogin = new MenuItem("Login");
 		menuUserLogin.setOnAction(e -> {
 			LoginGUI box = new LoginGUI();
-			System.out.println(box.getUsername()+":"+box.getPassword());
 		});
 		MenuItem menuUserRegister = new MenuItem("Register");
 		menuUserRegister.setOnAction(e -> {
 			RegisterGUI box = new RegisterGUI();
-			System.out.println(box.getEmail()+":"+box.getPassword());
 		});
 		MenuItem menuCreate = new MenuItem("Create");
 		menuCreate.setOnAction(e -> {
