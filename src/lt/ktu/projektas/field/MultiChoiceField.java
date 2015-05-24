@@ -62,7 +62,7 @@ public class MultiChoiceField implements Field{
 	@Override
 	public String toString() {
 		String s = getType().toString().toUpperCase();
-		return "[ "+String.format("%1$-"+12+"s", s)+" ] "+question.getName();
+		return "["+String.format("%1$-"+12+"s", s)+"] "+question.getName();
 	}
 	@Override
 	public Question getQuestion() {
