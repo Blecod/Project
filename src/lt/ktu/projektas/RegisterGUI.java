@@ -33,13 +33,10 @@ public class RegisterGUI {
 	//Client client;
 	
 	private Stage window;
-	private TextField firstname, secondname, email;
+	private TextField username, company, firstname, secondname;
 	private PasswordField password, repeatPassword;
 	public RegisterGUI(){
 		
-		
-	//	client = ClientBuilder.newClient();
-	//	usr = new RestRegister(client);
 		
 		window = new Stage();
 		window.initModality(Modality.APPLICATION_MODAL);
@@ -48,15 +45,17 @@ public class RegisterGUI {
 
 		window.setResizable(false);
 		
+		username = new TextField();
+		company = new TextField();
 		firstname = new TextField();
 		secondname = new TextField();
-		email = new TextField();
 		password = new PasswordField();
 		repeatPassword = new PasswordField();
 		
-		Label firstnameTitle = new Label("First name:");
-		Label secondnameTitle = new Label("Second name:");
-		Label emailTitle = new Label("E-mail:");
+		Label usernameTitle = new Label("E-mail:");
+		Label companyTitle = new Label("Company(Optional):");
+		Label firstnameTitle = new Label("First name(Optional):");
+		Label secondnameTitle = new Label("Second name(Optional):");
 		Label passwordTitle = new Label("Password:");
 		Label repeatPasswordTitle = new Label("Re-password:");
 		Button submit = new Button("Register");
@@ -65,14 +64,14 @@ public class RegisterGUI {
 		
 		firstname.setMaxWidth(Double.MAX_VALUE);
 		secondname.setMaxWidth(Double.MAX_VALUE);
-		email.setMaxWidth(Double.MAX_VALUE);
+		username.setMaxWidth(Double.MAX_VALUE);
 		password.setMaxWidth(Double.MAX_VALUE);
 		repeatPassword.setMaxWidth(Double.MAX_VALUE);
 		submit.setMaxWidth(Double.MAX_VALUE);
 		
 		VBox box = new VBox(5);
 		box.setPadding(new Insets(5, 5, 0, 5));
-		box.getChildren().addAll(firstnameTitle, firstname, secondnameTitle, secondname, emailTitle, email, passwordTitle, password, repeatPasswordTitle, repeatPassword, submit);
+		box.getChildren().addAll(usernameTitle, username, companyTitle, company, firstnameTitle, firstname, secondnameTitle, secondname, passwordTitle, password, repeatPasswordTitle, repeatPassword, submit);
 		Scene scene = new Scene(box);
 		window.setScene(scene);
 		window.showAndWait();
@@ -84,7 +83,7 @@ public class RegisterGUI {
 		return secondname.getText();
 	}
 	public String getEmail(){
-		return email.getText();
+		return username.getText();
 	}
 	public String getPassword(){
 		return password.getText();
@@ -101,7 +100,7 @@ public class RegisterGUI {
 				AlertGUI.show("Fill in  your second name!");
 				return;
 			}
-			if(email.getText().length()==0){
+			if(username.getText().length()==0){
 				AlertGUI.show("Fill in  your e-mail!");
 				return;
 			}

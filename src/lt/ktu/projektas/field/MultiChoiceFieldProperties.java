@@ -51,7 +51,7 @@ public class MultiChoiceFieldProperties implements Properties{
 		question.setAllowEmpty(allow_empty.isSelected());
 		if(c_min.isSelected())question.setMinChoices(min.getValue());
 		if(c_max.isSelected())question.setMinChoices(max.getValue());
-		StringField field = new StringField();
+		MultiChoiceField field = new MultiChoiceField();
 		field.setQuestion(question);
 		return field;
 	}

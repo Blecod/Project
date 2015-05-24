@@ -64,9 +64,9 @@ public class OneChoiceField implements Field{
 		if(group.getSelectedToggle() == null) throw new Exception("Value of the field was not set!");
 	}
 	@Override
-	public String getListDisplay() {
+	public String toString() {
 		String s = getType().toString().toUpperCase();
-		return "[ "+String.format("%1$-"+12+"s", s)+" ] "+question.getName()+"\n";
+		return "[ "+String.format("%1$-"+12+"s", s)+" ] "+question.getName();
 	}
 	@Override
 	public Question getQuestion() {

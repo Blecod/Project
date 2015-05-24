@@ -25,5 +25,5 @@ public interface Field{
 	public FieldType getType();
 	public VBox getDisplay() throws Exception;
 	public void checkValue() throws Exception;
-	public String getListDisplay();
+	public String toString();
 }

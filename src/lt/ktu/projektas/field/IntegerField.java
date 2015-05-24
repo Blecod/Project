@@ -51,7 +51,7 @@ public class IntegerField implements Field{
 		
 	}
 	@Override
-	public String getListDisplay() {
+	public String toString() {
 		String s = getType().toString().toUpperCase();
 		return "[ "+String.format("%1$-"+12+"s", s)+" ] "+question.getName()+"\n";
 	}

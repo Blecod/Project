@@ -43,7 +43,7 @@ public class OneChoiceFieldProperties implements Properties{
 		//question.setAllowCustom(allow_custom.isSelected());
 		question.setAllowEmpty(allow_empty.isSelected());
 		
-		StringField field = new StringField();
+		OneChoiceField field = new OneChoiceField();
 		field.setQuestion(question);
 		return field;
 	}

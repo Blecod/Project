@@ -20,11 +20,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import lt.ktu.project.client.ServerCommunication;
 
 public class LoginGUI {
 	private Stage window;
-	private TextField email;
+	private TextField username;
 	private PasswordField password;
 	public LoginGUI(){
 		window = new Stage();
@@ -34,65 +33,34 @@ public class LoginGUI {
 
 		window.setResizable(false);
 		
-		email = new TextField();
+		username = new TextField();
 		password = new PasswordField();
 		
-		Label emailTitle = new Label("E-mail:");
+		Label usernameTitle = new Label("Username:");
 		Label passwordTitle = new Label("Password:");
 		Button submit = new Button("Login");
 		
-		submit.setOnAction(new onSubmit());
+		//submit.setOnAction(new onSubmit());
 		
-		email.setMaxWidth(Double.MAX_VALUE);
+		username.setMaxWidth(Double.MAX_VALUE);
 		password.setMaxWidth(Double.MAX_VALUE);
 		submit.setMaxWidth(Double.MAX_VALUE);
 		
 		VBox box = new VBox(5);
 		box.setPadding(new Insets(5, 5, 0, 5));
-		box.getChildren().addAll(emailTitle, email, passwordTitle, password, submit);
+		box.getChildren().addAll(usernameTitle, username, passwordTitle, password, submit);
 		Scene scene = new Scene(box);
 		window.setScene(scene);
 		window.showAndWait();
 	}
-	public String getEmail(){
-		return email.getText();
+	public void close(){
+		window.close();
+	}
+	public String getUsername(){
+		return username.getText();
 	}
 	public String getPassword(){
 		return password.getText();
 	}
-	private class onSubmit implements EventHandler<ActionEvent>{
-		@Override
-		public void handle(ActionEvent arg0) {	
-			if(email.getText().length()==0){
-				AlertGUI.show("Fill in  your e-mail!");
-				return;
-			}
-			if(password.getText().length()==0){
-				AlertGUI.show("Fill in  your password!");
-				return;
-			}
-			
-			String nick = "Testy2";
-			String pass = "Passy2";
-			try {
-				ServerCommunication toServer = new ServerCommunication(nick, pass);
-				toServer.LogInUser(nick, pass);
-			//	toServer.c
-			} catch (BadRequestException e) {
-				System.out.println(e.getResponse().getEntity());
-		          ByteArrayInputStream stream =(ByteArrayInputStream) e.getResponse().getEntity();
-		          int n = stream.available();
-		          byte[] bytes = new byte[n];
-		          stream.read(bytes, 0, n);
-		          String s = new String(bytes, StandardCharsets.UTF_8);
-		          System.out.println(s);
-		          
-		        	  	//window.close();
-		          AlertGUI.show("Fill in  your password!");
-				  return;
-			}
-			
-			window.close();
-		}
-	}
+
 }

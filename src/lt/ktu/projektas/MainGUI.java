@@ -54,55 +54,10 @@ public class MainGUI extends Application{
 	@Override
 	public void start(Stage stage) throws Exception {
 	
-		ServerCommunication toServer = new ServerCommunication();
-	
-		//DABARTINIO USERIO TESTAS
-		//User Tuser = currentUser;
-		//String test = currentUser.getSurname();
-		//System.out.println(test);
+
 		User2Container formsContainer;
 		
-		//TESTAS IMTI FORMAS   (404) kaþkokie papildomi simboliai atsiranda
-//		try{
-//			formsContainer = toServer.getForms("?author=Lukas&q=&sort=&order=&limit=100");
-//		} catch (InternalServerErrorException e) {
-//
-//		//	System.out.println(e.getResponse().getEntity());
-//	          ByteArrayInputStream stream =(ByteArrayInputStream) e.getResponse().getEntity();
-//	          int n = stream.available();
-//	          byte[] bytes = new byte[n];
-//	          stream.read(bytes, 0, n);
-//	          String s = new String(bytes, StandardCharsets.UTF_8);
-//	          System.out.println(s);
-//			
-//		}
-		
-		
-		
-//		try {  //TEST Pridëti naujà formà
-//			ArrayList<String> tags = new ArrayList<String>();
-//			tags.add("Tag un");
-//			tags.add("Tag deux");
-//			tags.add("Tag trois");
-//			ArrayList<Question> questions = new ArrayList<Question>();
-//			Question question = new Question();
-//			question.setName("Ze name");
-//			question.setType("integer");
-//			question.setAllowEmpty(false);
-//			question.setAllowCustom("umm");
-//			questions.add(question);
-//			Form newForm = new Form("Name", "Author", "description", tags, "Date", true, true, true, true, questions, 100);
-//			toServer.PostForm(newForm);
-//			//System.out.println("succes?");
-//		} catch (BadRequestException e) {
-//			System.out.println(e.getResponse().getEntity());
-//	          ByteArrayInputStream stream =(ByteArrayInputStream) e.getResponse().getEntity();
-//	          int n = stream.available();
-//	          byte[] bytes = new byte[n];
-//	          stream.read(bytes, 0, n);
-//	          String s = new String(bytes, StandardCharsets.UTF_8);
-//	          System.out.println(s);
-//		}
+
 		
 		
 		
@@ -123,21 +78,8 @@ public class MainGUI extends Application{
 		pane.getRowConstraints().addAll(row1);
 		
 	    tabs = new FormTabPane();
-		//Testavimui sukuriama temp forma
-//        User userr = new User("Vardenis", "Pavardenis", "vardenis.pavardenis@ktu.edu");
-//        Form temp = new Form(FormType.PRIVATE, "Straipsniai", userr, "2014.03.24");
-//        temp.setFields(new Field[]{new Field(FieldType.TEXTAREA, "Straipsnis"), new Field(FieldType.DOUBLE, "Ilgis")});
-//        temp.setData(new FilledData[]{
-//        		new FilledData<>(userr, "2014.03.24 12:33", new Object[]{"Lorem ipsum dolor sit amet, consectetur adipiscing elit. \nMaecenas a laoreet lorem, at viverra erat. Aenean venenatis libero at lectus pellentesque bibendum. Duis rhoncus tortor quis elementum fermentum. Phasellus sollicitudin scelerisque luctus. Nullam vestibulum interdum rhoncus.a</textarea>", 0.0}),
-//        		new FilledData<>(userr, "2014.03.24 12:33", new Object[]{"ectetur adipiscing elit. \nMaecm rhoncus.a</textarea>", 0.0}),
-//        		new FilledData<>(userr, "2014.03.24 12:33", new Object[]{"L4psum dolor sit amet, consectetur adipiscing elit. \nMaecm rhoncus.a</textarea>", 0.0}),
-//        		new FilledData<>(userr, "2014.03.24 12:33", new Object[]{"L5dolor sit amet, consectetur adipiscing elit. \nMaecm rhoncus.a</textarea>", 0.0}),
-//
-//        		new FilledData<>(userr, "2014.03.24 12:33", new Object[]{"Lorem it. \nMaecena viverra erat. Aenean venenatis libero at lectus pellentum interdum rhoncus.a</textarea>", 0.0})});
-//        
-	    
-        
-//        tabs.openForm(temp);
+
+
 	    pane.add(tabs, 1, 0);
 		formList = new FormList();
 		pane.add(formList, 0, 0);
@@ -152,7 +94,7 @@ public class MainGUI extends Application{
 		MenuItem menuUserLogin = new MenuItem("Login");
 		menuUserLogin.setOnAction(e -> {
 			LoginGUI box = new LoginGUI();
-			System.out.println(box.getEmail()+":"+box.getPassword());
+			System.out.println(box.getUsername()+":"+box.getPassword());
 		});
 		MenuItem menuUserRegister = new MenuItem("Register");
 		menuUserRegister.setOnAction(e -> {
@@ -184,12 +126,6 @@ public class MainGUI extends Application{
 		stage.show();
 		
 		this.stage = stage;
-	}
-	private class onAction implements EventHandler<ActionEvent>{
-		@Override
-		public void handle(ActionEvent arg0) {	
-			
-		}
 	}
 
 }

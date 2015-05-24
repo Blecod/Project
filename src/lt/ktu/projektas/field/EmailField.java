@@ -61,9 +61,9 @@ public class EmailField implements Field{
 		if(result.length() < question.getMaxValue()) throw new Exception("Field text must have not more than "+question.getMaxValue()+" characters!\n(Field: "+question.getName()+")");
 	}
 	@Override
-	public String getListDisplay() {
+	public String toString() {
 		String s = getType().toString().toUpperCase();
-		return " ["+String.format("%1$12s", s)+" ] "+question.getName();
+		return " ["+String.format("%1$-12s", s)+" ] "+question.getName();
 	}
 	@Override
 	public Question getQuestion() {
