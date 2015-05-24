@@ -62,7 +62,7 @@ public class EmailFieldProperties implements Properties{
 		        if(!matcher.find()) throw new Exception("Incorrect providers!"); 
 			}
 		}
-		StringField field = new StringField();
+		EmailField field = new EmailField();
 		field.setQuestion(question);
 		return field;
 	}

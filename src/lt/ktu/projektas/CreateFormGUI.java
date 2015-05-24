@@ -8,8 +8,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
 import javafx.scene.input.ContextMenuEvent;
@@ -38,13 +40,13 @@ public class CreateFormGUI {
 		window.setTitle("Create form");
 		window.setWidth(500);
 		window.setHeight(600);
-		window.setMinWidth(500);
+		window.setResizable(false);
 		//window.setResizable(false);
 		combo = new ComboBox<FieldType>();
 		fields = new ListView<Field>();
 		fields.getStylesheets().add("fieldList.css");
 		fields.setOnContextMenuRequested(new onD());
-		fields.setMaxHeight(Double.MAX_VALUE);
+		fields.setMaxHeight(285);
 		fields.setMaxWidth(Double.MAX_VALUE);
 		combo.setPromptText("Select type...");
 		combo.setItems(FXCollections.observableArrayList(FieldType.getAllTypes()));
@@ -97,9 +99,14 @@ public class CreateFormGUI {
 	private class onD implements EventHandler<ContextMenuEvent>{
 
 		@Override
-		public void handle(ContextMenuEvent arg0) {
+		public void handle(ContextMenuEvent event) {
+			if(fields.getSelectionModel().isEmpty())return;
 			System.out.println(fields.getSelectionModel().getSelectedItem().toString());
-			
+			ContextMenu context = new ContextMenu();
+			MenuItem remove = new MenuItem("Remove");
+			remove.setOnAction(e -> fields.getItems().remove(fields.getSelectionModel().getSelectedItem()));
+			context.getItems().add(remove);
+			context.show(window, event.getScreenX(), event.getScreenY());
 		}
 	
 	}

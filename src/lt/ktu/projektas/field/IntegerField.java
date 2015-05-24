@@ -28,6 +28,7 @@ public class IntegerField implements Field{
 	public FieldType getType() {
 		return FieldType.INTEGER;
 	}
+	
 	@Override
 	public VBox getDisplay() throws Exception{
 		if(question.getName() == null) throw new Exception("This field isn't named!");
