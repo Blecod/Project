@@ -25,9 +25,7 @@ import lt.ktu.project.client.ServerCommunication;
 import lt.ktu.projektas.TESTmaterial.Form;
 import lt.ktu.projektas.TESTmaterial.Question;
 import lt.ktu.projektas.tabs.FormTabPane;
-import lt.ktu.projektas.utils.Field;
-import lt.ktu.projektas.utils.FieldType;
-import lt.ktu.projektas.utils.FilledData;
+
 //import lt.ktu.projektas.utils.Form;
 import lt.ktu.projektas.utils.FormType;
 import lt.ktu.projektas.utils.User;

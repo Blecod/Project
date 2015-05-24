@@ -3,35 +3,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JavaFX"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="javax.annotation-api-1.2.jar"/>
-	<classpathentry kind="lib" path="javax.inject-2.4.0-b09.jar"/>
-	<classpathentry kind="lib" path="javax.servlet-api-3.0.1.jar"/>
-	<classpathentry kind="lib" path="javax.ws.rs-api-2.0.1.jar"/>
-	<classpathentry kind="lib" path="jersey-server.jar"/>
-	<classpathentry kind="lib" path="jersey-json-1.19.jar"/>
-	<classpathentry kind="lib" path="jersey-container-servlet-core.jar"/>
-	<classpathentry kind="lib" path="jersey-entity-filtering-2.16.jar"/>
-	<classpathentry kind="lib" path="jersey-client.jar"/>
-	<classpathentry kind="lib" path="jersey-media-json-jackson-2.16.jar"/>
-	<classpathentry kind="lib" path="jersey-common.jar"/>
-	<classpathentry kind="lib" path="jersey-guava-2.16.jar"/>
-	<classpathentry kind="lib" path="jersey-media-jaxb.jar"/>
-	<classpathentry kind="lib" path="jersey-container-servlet.jar"/>
-	<classpathentry kind="lib" path="osgi-resource-locator-1.0.1.jar"/>
-	<classpathentry kind="lib" path="org.osgi.core-4.2.0.jar"/>
-	<classpathentry kind="lib" path="persistence-api-1.0.jar"/>
-	<classpathentry kind="lib" path="validation-api-1.1.0.Final.jar"/>
-	<classpathentry kind="lib" path="javassist-3.18.1-GA.jar"/>
-	<classpathentry kind="lib" path="jackson-jaxrs-base-2.5.1.jar"/>
-	<classpathentry kind="lib" path="jackson-module-jaxb-annotations-2.5.1.jar"/>
-	<classpathentry kind="lib" path="jackson-databind-2.5.1.jar"/>
-	<classpathentry kind="lib" path="jackson-jaxrs-json-provider-2.5.1.jar"/>
-	<classpathentry kind="lib" path="jackson-annotations-2.5.1.jar"/>
-	<classpathentry kind="lib" path="jackson-core-2.5.1.jar"/>
-	<classpathentry kind="lib" path="aopalliance-repackaged-2.4.0-b09.jar"/>
-	<classpathentry kind="lib" path="asm-debug-all-5.0.2.jar"/>
-	<classpathentry kind="lib" path="hk2-api-2.4.0-b09.jar"/>
-	<classpathentry kind="lib" path="hk2-locator-2.4.0-b09.jar"/>
-	<classpathentry kind="lib" path="hk2-utils-2.4.0-b09.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Restlet"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
