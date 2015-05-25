@@ -10,4 +10,6 @@ public interface FormActions {
 	String registerForm(Form form);
 	String putForm(Form form, String id);
 	User2Container getForms(String id);
+	String deleteForm(String id);
+	//Strin
 }

@@ -23,74 +23,47 @@ import lt.ktu.projektas.utils.User;
 import lt.ktu.projektas.utils.User;
 import lt.ktu.projektas.utils.User2Container;
 
-
-public class ServerCommunication {
+public final class ServerCommunication {
 	
 	public static Register usr;
 	public static FormActions form;
 	public static User currentUser;
-	public static Client client;
-	//client = ClientBuilder.newClient().register(new Authenticator("Anonymous", ""));
+	public static Client client = ClientBuilder.newClient().register(new Authenticator("Anonymous", ""));
 	
-	public ServerCommunication(){
-		//currentUser.setUname("Anonymous");
+	private static void open(){
 		client = ClientBuilder.newClient().register(new Authenticator("Anonymous", ""));
 		usr = new RestRegister(client);
 		form = new RestFormActions(client);
 	}
 	
-	public ServerCommunication(String user, String pass){
+	public static void open(String user, String pass){
 		client = ClientBuilder.newClient().register(new Authenticator(user, pass));
 		usr = new RestRegister(client);
 		form = new RestFormActions(client);
 	}
 	
-	private static void close() {
+	public static void close() {
 		client.close();
 	}
 	
-	public static void registerUser(User user){ //Priregistruoti naujà vartotojà
+	public static void registerUser(User user) throws BadRequestException{ //Priregistruoti naujà vartotojà
 		
-		Runnable run = new Runnable() {
-			@Override
-			public void run() {
-				
-				try {
 					String url;
 					final String URL = "http://http://84.55.16.5:8080/KtuFormBackend/user";
 					WebTarget target = client.target(URL);
 					url = usr.registerUser(user); 
 					System.out.println(url.toString());
 					
-			  } catch (InternalServerErrorException e) {
-				  
-				  System.out.println(e.getResponse().getEntity());
-		          ByteArrayInputStream stream =(ByteArrayInputStream) e.getResponse().getEntity();
-		          int n = stream.available();
-		          byte[] bytes = new byte[n];
-		          stream.read(bytes, 0, n);
-		          String s = new String(bytes, StandardCharsets.UTF_8);
-		          System.out.println(s);
-				  
-			  }
-			}
-		};
-		LoadingGUI.show(run); 		
-		//client.close();
 	}
 	
-	public static void LogInUser(String userID, String Pass){
-		
-		Runnable run = new Runnable() {
-			@Override
-			public void run() {
-				
-				try {
+	public static void LogInUser(String userID, String Pass) throws BadRequestException{
+
 					// ;c
-					String CurrentUser = currentUser.getUname();
-					System.out.println("Current User name: " + CurrentUser);
-//					String url;
-//					url = usr.getUser(userID);
+			//		String CurrentUser = currentUser.getUname();
+				//	System.out.println("Current User name: " + CurrentUser);
+					String url;
+					url = usr.getUser(userID);
+					
 //					System.out.println(url.toString());
 //					currentUser.setUname(userID);
 //					System.out.println("Updated User name: " + CurrentUser);
@@ -99,104 +72,49 @@ public class ServerCommunication {
 					//client = ClientBuilder.newClient().register(new Authenticator(userID, Pass));
 					//client.register(new Authenticator(userID, Pass));
 					
-					System.out.println("A'ight");
-				}	catch (BadRequestException e) {
-					  
-					  System.out.println(e.getResponse().getEntity());
-			          ByteArrayInputStream stream =(ByteArrayInputStream) e.getResponse().getEntity();
-			          int n = stream.available();
-			          byte[] bytes = new byte[n];
-			          stream.read(bytes, 0, n);
-			          String s = new String(bytes, StandardCharsets.UTF_8);
-			          System.out.println(s);
-					  
-				  }
-					
-					
-				}
-			};
-			LoadingGUI.show(run); 		
-			//client.close();
+				//	System.out.println("A'ight");
 		
 	}
 
-	public static User2Container getForms(String url){
+	public static User2Container getForms(String url) throws BadRequestException{
 		User2Container con = new User2Container(null);
-		//Runnable run = new Runnable() {
-		//	@Override
-			//public void run() {
-				try {
+
 					User2Container print;
 					con = form.getForms(url);
-					System.out.println(con.toString());
-					} catch (BadRequestException e) {
-						  
-						  System.out.println(e.getResponse().getEntity());
-				          ByteArrayInputStream stream =(ByteArrayInputStream) e.getResponse().getEntity();
-				          int n = stream.available();
-				          byte[] bytes = new byte[n];
-				          stream.read(bytes, 0, n);
-				          String s = new String(bytes, StandardCharsets.UTF_8);
-				          System.out.println(s);
-						  
-					 }
-					 	
-						
-			//	}
-			//};
-			//LoadingGUI.show(run);
+					System.out.println("MMMMM");
+					
 			return con; 	
 	}
 	
-	public static void PostForm(Form newForm){
-//		Runnable run = new Runnable() {
-//			@Override
-//			public void run() {
-//				
-				try {
+	public static void PostForm(Form newForm) throws BadRequestException{
 					String id;
 					//newForm.setAuthor(currentUser.getName());
 					id = form.registerForm(newForm);
 					System.out.println("Formos ID: " + id);
-				} catch (InternalServerErrorException e) {
-					  
-					  System.out.println(e.getResponse().getEntity());
-			          ByteArrayInputStream stream =(ByteArrayInputStream) e.getResponse().getEntity();
-			          int n = stream.available();
-			          byte[] bytes = new byte[n];
-			          stream.read(bytes, 0, n);
-			          String s = new String(bytes, StandardCharsets.UTF_8);
-			          System.out.println(s);
-					  
-				  }
-//			}
-//		};
-//		LoadingGUI.show(run);
+
 	}
 	
-	public static void PutForm(Form newForm, String id){
-//		Runnable run = new Runnable() {
-//			@Override
-//			public void run() {
-//				
-				try {
+	public static void PutForm(Form newForm, String id) throws BadRequestException{
+
 					String idd;
 					//newForm.setAuthor(currentUser.getName());
 					idd = form.putForm(newForm, id);
 					System.out.println("Formos ID: " + idd);
-				} catch (InternalServerErrorException e) {
-					  
-					  System.out.println(e.getResponse().getEntity());
-			          ByteArrayInputStream stream =(ByteArrayInputStream) e.getResponse().getEntity();
-			          int n = stream.available();
-			          byte[] bytes = new byte[n];
-			          stream.read(bytes, 0, n);
-			          String s = new String(bytes, StandardCharsets.UTF_8);
-			          System.out.println(s);
-					  
-				  }
-//			}
-//		};
-//		LoadingGUI.show(run);
+				
 	}
+	
+	public static void DeleteUser(String UserID) throws BadRequestException{
+					String url;
+					url = usr.deleteUser(UserID);
+					System.out.println(url.toString());
+	}
+	
+	public static void deleteForm(String id) throws BadRequestException{
+
+					String url;
+					url = form.deleteForm(id);
+					System.out.println(url.toString());
+
+	}	
+	
 }

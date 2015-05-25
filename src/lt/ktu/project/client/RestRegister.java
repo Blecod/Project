@@ -8,7 +8,7 @@ import lt.ktu.projektas.utils.User;
 
 public class RestRegister implements Register {
 	
-	private static final String PERSON_URL = "http://84.55.17.37:8080/KtuFormBackend/user";
+	private static final String PERSON_URL = "http://172.16.128.10:8080/KtuFormBackend/user";
 	
 	private WebTarget target;
 	
@@ -24,6 +24,11 @@ public class RestRegister implements Register {
 	@Override
 	public String getUser(String id){
 		return InvocationWrapper.invokeGet(target, "" + id, String.class);
+	}
+	
+	@Override
+	public String deleteUser(String id){
+		return InvocationWrapper.invokeDelete(target, "" + id, String.class);
 	}
 	
 }

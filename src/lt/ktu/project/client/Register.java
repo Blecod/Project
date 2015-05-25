@@ -8,4 +8,5 @@ import lt.ktu.projektas.utils.User;
 public interface Register {
 	String registerUser(User usr);
 	String getUser(String id);
+	String deleteUser(String id);
 }

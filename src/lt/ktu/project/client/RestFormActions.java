@@ -12,7 +12,7 @@ import lt.ktu.projektas.utils.User2Container;
 
 public class RestFormActions implements FormActions{
 	
-	private static final String FORMS_URL = "http://84.55.17.37:8080/KtuFormBackend/forms";
+	private static final String FORMS_URL = "http://84.55.18.74:8080/KtuFormBackend";
 	
 	private WebTarget target;
 	
@@ -27,12 +27,18 @@ public class RestFormActions implements FormActions{
 	
 	@Override
 	public User2Container getForms(String id){
-		return InvocationWrapper.invokeGet(target, "" + id, User2Container.class);
+		return InvocationWrapper.invokeGet(target, "", User2Container.class);
 	}
 	
 	@Override
 	public String putForm(Form form, String id){
 		return InvocationWrapper.invokePut(target, "" + id, form, String.class);
+	}
+	
+	@Override
+	public String deleteForm(String id){
+		return InvocationWrapper.invokeDelete(target, "" + id, String.class);
+		
 	}
 	
 }

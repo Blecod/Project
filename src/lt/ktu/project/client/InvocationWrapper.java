@@ -16,6 +16,27 @@ public class InvocationWrapper {
 		
 		public static <T, R> R invokeGet(WebTarget parent, String path, Class<R> clazz, MediaType mediaType) {
 			WebTarget target = parent.path(path);
+		//	target.queryParam("author", "tadas")
+			Invocation invocation = target.request(mediaType)
+					.buildGet();
+			return invocation.invoke(clazz);
+		}
+		
+		public static <T, R> R invokeGet(WebTarget parent, String path,Parameters param, Class<R> clazz, MediaType mediaType) {
+			WebTarget target = parent.path(path);
+			if(param.getQuery() == null){
+				target.queryParam("q", "");
+			} else {
+				target.queryParam("q", param.getQuery());
+			}
+			
+			if(param.getAuthor() != null){
+				target.queryParam("author", param.getAuthor());
+			}
+			
+			
+			
+		//	target.queryParam("author", "tadas")
 			Invocation invocation = target.request(mediaType)
 					.buildGet();
 			return invocation.invoke(clazz);
@@ -35,7 +56,7 @@ public class InvocationWrapper {
 			return invocation.invoke(clazz);
 		}
 		
-		public static <T> T invokeDelete(WebTarget parent, String path, T value, Class<T> clazz) {
+		public static <T> T invokeDelete(WebTarget parent, String path, Class<T> clazz) {
 			WebTarget target = parent.path(path);
 			Invocation invocation = target.request(MediaType.APPLICATION_JSON).buildDelete();
 			return invocation.invoke(clazz);
