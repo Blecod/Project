@@ -52,7 +52,7 @@ public class RegisterGUI {
 		password = new PasswordField();
 		repeatPassword = new PasswordField();
 		
-		Label usernameTitle = new Label("E-mail:");
+		Label usernameTitle = new Label("Username:");
 		Label companyTitle = new Label("Company(Optional):");
 		Label firstnameTitle = new Label("First name(Optional):");
 		Label secondnameTitle = new Label("Second name(Optional):");
