@@ -6,7 +6,7 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
-import lt.ktu.projektas.utils.Question;
+import lt.ktu.formbackend.model.Question;
 
 public class OneChoiceFieldProperties implements Properties{
 	private VBox box;

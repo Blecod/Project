@@ -36,7 +36,6 @@ public class CreateFieldGUI {
 		window.setTitle("Add field");
 		window.setWidth(500);
 		window.setResizable(false);
-		
 		switch(type){
 		case INTEGER:
 			properties = new IntegerFieldProperties();

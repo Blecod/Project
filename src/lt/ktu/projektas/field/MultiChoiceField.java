@@ -10,7 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
-import lt.ktu.projektas.utils.Question;
+import lt.ktu.formbackend.model.Question;
 
 public class MultiChoiceField implements Field{
 	private Question question;

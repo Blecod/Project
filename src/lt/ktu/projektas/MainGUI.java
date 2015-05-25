@@ -54,15 +54,7 @@ public class MainGUI extends Application{
 	@Override
 	public void start(Stage stage) throws Exception {
 	
-
 		User2Container formsContainer;
-		
-
-		
-		
-		
-		
-		
 		
 		RowConstraints row1;
 		row1 = new RowConstraints();

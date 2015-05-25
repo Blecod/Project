@@ -4,7 +4,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
-import lt.ktu.projektas.utils.Question;
+import lt.ktu.formbackend.model.Question;
 
 public class IntegerField implements Field{
 	private Question question;

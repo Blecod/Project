@@ -1,4 +1,4 @@
-package lt.ktu.projektas.utils;
+package lt.ktu.formbackend.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;

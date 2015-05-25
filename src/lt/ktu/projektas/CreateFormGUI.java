@@ -1,5 +1,7 @@
 package lt.ktu.projektas;
 
+import java.util.ArrayList;
+
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -21,6 +23,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import lt.ktu.formbackend.model.Question;
 import lt.ktu.projektas.field.Field;
 import lt.ktu.projektas.field.FieldType;
 import lt.ktu.projektas.field.IntegerFieldProperties;
@@ -45,7 +48,7 @@ public class CreateFormGUI {
 		combo = new ComboBox<FieldType>();
 		fields = new ListView<Field>();
 		fields.getStylesheets().add("fieldList.css");
-		fields.setOnContextMenuRequested(new onD());
+		fields.setOnContextMenuRequested(new onRightClick());
 		fields.setMaxHeight(285);
 		fields.setMaxWidth(Double.MAX_VALUE);
 		combo.setPromptText("Select type...");
@@ -96,7 +99,31 @@ public class CreateFormGUI {
 		window.setScene(scene);
 		window.showAndWait();
 	}
-	private class onD implements EventHandler<ContextMenuEvent>{
+	public String getName(){
+		return name.getText();
+	}
+	public String getDescription(){
+		return desc.getText();
+	}
+	public String getTags(){
+		return tags.getText();
+	}
+	public boolean getAllowAnon(){
+		return allow_anon.isSelected();
+	}
+	public boolean getAllowPublic(){
+		return allow_public.isSelected();
+	}
+	public boolean getShowResults(){
+		return show_results.isSelected();
+	}
+	public ArrayList<Question> getQuestions(){
+		ArrayList<Question> result = new ArrayList<Question>();
+		for(Field field : fields.getItems())
+			result.add(field.getQuestion());
+		return result;
+	}
+	private class onRightClick implements EventHandler<ContextMenuEvent>{
 
 		@Override
 		public void handle(ContextMenuEvent event) {

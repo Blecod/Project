@@ -10,7 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
-import lt.ktu.projektas.utils.Question;
+import lt.ktu.formbackend.model.Question;
 
 public class EmailFieldProperties implements Properties{
 	private VBox box;

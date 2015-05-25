@@ -16,7 +16,7 @@ import javafx.event.EventHandler;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
-import lt.ktu.projektas.utils.Question;
+import lt.ktu.formbackend.model.Question;
 
 
 public interface Field{
